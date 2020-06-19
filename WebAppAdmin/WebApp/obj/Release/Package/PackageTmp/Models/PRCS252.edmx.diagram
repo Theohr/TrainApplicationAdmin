@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76c1e8012d3d4d419eede9b5bcdf0e3a" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.COACH_FIRST" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COACH_STANDARD" Width="1.5" PointX="5.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.JOURNEY" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PAYMENTDETAIL" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ROUTE" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SCHEDULE" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STATION" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TICKET" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRAIN" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRANSACTION" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USERACCOUNT" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="Model.FIRSTCLASSCOACHES_TRAINID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.STANDARDCLASSCOACHES_TRAINID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.JOURNEY_ARRIVAL_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.JOURNEY_DEPARTURE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.TICKET_JOURNEYID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PAYMENTDETAILS_USERID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C00171612" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ROUTE_DEPARTURE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ROUTE_DESTINATION_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ROUTE_FIRSTSTOP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SCHEDULE_ROUTEID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SCHEDULE_TRAINID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.TICKET_TRANSACTIONID_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

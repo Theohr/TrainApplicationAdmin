@@ -1,0 +1,101 @@
+﻿@model IEnumerable<WebApp.Models.COACH_FIRST>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a journey icon-->
+    <h2><i class="fas fa-train"></i> Coach First</h2>
+
+    <!--The search bar searching for coach number id  of the coaches the list on button click-->
+    <p style="margin-top:20px">
+        @using (@Html.BeginForm("Index", "Coach_First", FormMethod.Get))
+        {
+            <b><i class="fas fa-search"></i> Search By:</b>
+            @Html.RadioButton("searchBy", "CoachNO", true) <text>Coach Number</text>
+            @Html.TextBox("Search") <input type="submit" value="search">
+        }
+    </p>
+
+    <!--Create new user button which leads to the Create view of the coach first with the appropriate design-->
+    <a>
+        <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-bottom:20px;
+                  margin:10px;
+                  width: auto;
+                  height: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+            <i class="fas fa-plus"></i> @Html.ActionLink("Create New", "Create")
+        </p>
+    </a>
+    <!--Table where fields of the coach labels are shown-->
+    <table class="table" style="margin-top:20px">
+        <tr>
+            <th>
+                Train ID <!--train id -->
+            </th>
+            <th>
+                Coach Number <!--coach number-->
+            </th>
+            <th>
+                Seating <!-- seating--> -->
+            </th>
+            <th>
+                Train Status <!--train status -->
+            </th>
+        </tr>
+
+        <!--For each field in the table for the coach first details then the specific data are passed into the table-->
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRAINID) <!--train id name id will be displayed under the  train id field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COACHNO) <!--coach id name id will be displayed under the  coach id field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEATING) <!--train seating id name id will be displayed under the  train seating id field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRAIN.STATUS) <!--train status id name id will be displayed under the  train status id field-->
+            </td>
+            <!--Edit, Details, Delete buttons at the end of the user details redirecting to their representative page-->
+            <td>
+                <i class="fas fa-edit"></i> @Html.ActionLink("Edit", "Edit", new { id = item.TRAINID, idcoach = item.COACHNO }) |
+                <i class="fas fa-info-circle"></i> @Html.ActionLink("Details", "Details", new { id = item.TRAINID, idcoach = item.COACHNO }) |
+                <i class="fas fa-trash-alt"></i> @Html.ActionLink("Delete", "Delete", new { id = item.TRAINID, idcoach = item.COACHNO })
+            </td>
+        </tr>
+        }
+
+    </table>
+</body>

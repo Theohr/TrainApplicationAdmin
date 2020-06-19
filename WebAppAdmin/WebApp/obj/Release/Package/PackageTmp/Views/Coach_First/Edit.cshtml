@@ -1,0 +1,75 @@
+﻿@model WebApp.Models.COACH_FIRST
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    a {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <h2><i class="fas fa-edit"></i> Edit Coach</h2>
+    @Html.AntiForgeryToken()
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.TRAINID)
+
+            @Html.HiddenFor(model => model.COACHNO)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SEATING, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SEATING, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SEATING, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+                <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                    <i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    }
+</body>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

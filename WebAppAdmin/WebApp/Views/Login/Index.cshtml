@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml"; // layout of the page
+}
+
+@model WebApp.Models.USERACCOUNT
+
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--Login form with appropriate styling-->
+    <form style="width: 360px; padding: 8% 0 0; margin: auto;">
+        <div class="container text-center" style="position: relative; z-index: 1; background: #f1f1f1;
+                                                  max-width: 360px; margin: 0 auto 050px; padding: 65px;
+                                                  text-align: center; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+
+            <i class="fas fa-user-shield fa-5x"></i> <!--Admin Icon-->
+
+            <h1 class="text-center">Admin Login</h1> <!--Login title-->
+
+            <div class="text-center" style="margin-top:15px">
+                <i class="fas fa-users"></i> <!--username icon-->
+                <label for="uname"><b>Username</b></label> <!--User name label-->
+                <input type="text" placeholder="Enter Username" name="USERNAME" maxlength="16" required> <!--Username text-->
+            </div>
+
+            <div class="text-center" style="margin-top:15px">
+                <i class="fas fa-key"></i> <!--password icon-->
+                <label for="psw"><b>Password</b></label> <!--password label-->
+                <input type="password" placeholder="Enter Password" name="PASSWORD" maxlength="16" required> <!--password text-->
+            </div>
+
+            <div class="text-center" style="margin-top:15px">
+
+                <p style="background-color: #555555; color: white;
+                                     border: none; text-align: center; text-decoration: none;
+                                     padding: 8px 25px; display: inline-block; font-size: 16px;">
+                    <i class="fas fa-sign-in-alt"></i> @Html.ActionLink("Login", "Index", "Home") <!--Login button-->
+                </p>
+                <p style="background-color: #555555; color: white;
+                                                 border: none; text-align: center; text-decoration: none;
+                                                 padding: 8px 25px; display: inline-block; font-size: 16px;">
+                    <i class="fas fa-window-close"></i> @Html.ActionLink("Close", "Close") <!--close button-->
+                </p>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</body>

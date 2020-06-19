@@ -1,0 +1,99 @@
+﻿@model WebApp.Models.TRANSACTION
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--Title of the page-->
+    <h2><i class="fas fa-plus"></i> Create Transaction</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        <!--security feature-->
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TRANSACTIONID, htmlAttributes: new { @class = "control-label col-md-2" }) <!--transaction id label-->
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TRANSACTIONID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } }) <!--transaction id value-->
+                    @Html.ValidationMessageFor(model => model.TRANSACTIONID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.USERID, "USERID", htmlAttributes: new { @class = "control-label col-md-2" }) <!--transaction id label-->
+                <div class="col-md-10">
+                    @Html.DropDownList("USERID", null, htmlAttributes: new { @class = "form-control" }) <!--transaction id dropdown-->
+                    @Html.ValidationMessageFor(model => model.USERID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PRICE, htmlAttributes: new { @class = "control-label col-md-2" }) <!--price label-->
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { @class = "form-control" } }) <!--price value-->
+                    @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATEOFPURCHASE, htmlAttributes: new { @class = "control-label col-md-2" }) <!--date of purchase label-->
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DATEOFPURCHASE, new { htmlAttributes = new { @class = "form-control" } }) <!--date of purchase valye-->
+                    @Html.ValidationMessageFor(model => model.DATEOFPURCHASE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" /> <!--create button-->
+                </div>
+                <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                    <i class="fas fa-backward"></i> @Html.ActionLink("Back to List", "Index") <!--back to list button-->
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,95 @@
+﻿@model WebApp.Models.SCHEDULE
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    a {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <h2><i class="fas fa-plus"></i> Create Schedule</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ROUTEID, "ROUTEID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ROUTEID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ROUTEID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TRAINID, "TRAINID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("TRAINID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TRAINID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DEPARTURETIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DEPARTURETIME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DEPARTURETIME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ARRIVALTIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ARRIVALTIME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ARRIVALTIME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+                <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                    <i class="fas fa-backward"></i> @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    }
+</body>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

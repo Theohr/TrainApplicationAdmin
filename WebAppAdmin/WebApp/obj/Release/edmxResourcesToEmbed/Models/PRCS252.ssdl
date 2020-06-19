@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COACH_FIRST">
+    <Key>
+      <PropertyRef Name="TRAINID" />
+      <PropertyRef Name="COACHNO" />
+    </Key>
+    <Property Name="TRAINID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COACHNO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SEATING" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COACH_STANDARD">
+    <Key>
+      <PropertyRef Name="TRAINID" />
+      <PropertyRef Name="COACHNO" />
+    </Key>
+    <Property Name="TRAINID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COACHNO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="WINDOWSEATS" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="AISLESEATS" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TABLESEATS" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JOURNEY">
+    <Key>
+      <PropertyRef Name="JOURNEYID" />
+    </Key>
+    <Property Name="JOURNEYID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTURE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ARRIVAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTURETIME" Type="date" Nullable="false" />
+    <Property Name="ARRIVALTIME" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PAYMENTDETAILS">
+    <Key>
+      <PropertyRef Name="USERID" />
+      <PropertyRef Name="NAMEONCARD" />
+      <PropertyRef Name="CARDNUMBER" />
+      <PropertyRef Name="EXPIRYDATE" />
+    </Key>
+    <Property Name="USERID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAMEONCARD" Type="varchar2" MaxLength="75" Nullable="false" />
+    <Property Name="CARDNUMBER" Type="varchar2" MaxLength="16" Nullable="false" />
+    <Property Name="EXPIRYDATE" Type="date" Nullable="false" />
+    <Property Name="STREETNUMBER" Type="varchar2" MaxLength="60" Nullable="false" />
+    <Property Name="POSTCODE" Type="varchar2" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROUTE">
+    <Key>
+      <PropertyRef Name="ROUTEID" />
+    </Key>
+    <Property Name="ROUTEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTURE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FIRSTSTOP" Type="number" Precision="38" Scale="0" />
+    <Property Name="DESTINATION" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SCHEDULE">
+    <Key>
+      <PropertyRef Name="ROUTEID" />
+      <PropertyRef Name="TRAINID" />
+    </Key>
+    <Property Name="ROUTEID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TRAINID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DEPARTURETIME" Type="date" Nullable="false" />
+    <Property Name="ARRIVALTIME" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STATION">
+    <Key>
+      <PropertyRef Name="STATIONID" />
+    </Key>
+    <Property Name="STATIONID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATIONNAME" Type="varchar2" MaxLength="35" Nullable="false" />
+    <Property Name="PLATFORMS" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TICKET">
+    <Key>
+      <PropertyRef Name="TICKETID" />
+    </Key>
+    <Property Name="TICKETID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TRANSACTIONID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="JOURNEYID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SEATRESERVATION" Type="varchar2" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TRAIN">
+    <Key>
+      <PropertyRef Name="TRAINID" />
+    </Key>
+    <Property Name="TRAINID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COACH_FIRST" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COACH_STANDARD" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="TOTALSEATS" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TRANSACTIONS">
+    <Key>
+      <PropertyRef Name="TRANSACTIONID" />
+    </Key>
+    <Property Name="TRANSACTIONID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAMEONCARD" Type="varchar2" MaxLength="75" />
+    <Property Name="CARDNUMBER" Type="varchar2" MaxLength="16" />
+    <Property Name="EXPIRYDATE" Type="date" />
+    <Property Name="PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DATEOFPURCHASE" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERACCOUNT">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERTYPE" Type="varchar2" MaxLength="8" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="varchar2" MaxLength="35" Nullable="false" />
+    <Property Name="LASTNAME" Type="varchar2" MaxLength="35" Nullable="false" />
+    <Property Name="PHONENUMBER" Type="varchar2" MaxLength="11" Nullable="false" />
+    <Property Name="EMAILADDRESS" Type="varchar2" MaxLength="64" Nullable="false" />
+    <Property Name="STREETNUMBER" Type="varchar2" MaxLength="60" Nullable="false" />
+    <Property Name="POSTCODE" Type="varchar2" MaxLength="8" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="35" Nullable="false" />
+  </EntityType>
+  <Association Name="FIRSTCLASSCOACHES_TRAINID_FK">
+    <End Role="TRAIN" Type="Self.TRAIN" Multiplicity="1" />
+    <End Role="COACH_FIRST" Type="Self.COACH_FIRST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRAIN">
+        <PropertyRef Name="TRAINID" />
+      </Principal>
+      <Dependent Role="COACH_FIRST">
+        <PropertyRef Name="TRAINID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JOURNEY_ARRIVAL_FK">
+    <End Role="STATION" Type="Self.STATION" Multiplicity="1" />
+    <End Role="JOURNEY" Type="Self.JOURNEY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATION">
+        <PropertyRef Name="STATIONID" />
+      </Principal>
+      <Dependent Role="JOURNEY">
+        <PropertyRef Name="ARRIVAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JOURNEY_DEPARTURE_FK">
+    <End Role="STATION" Type="Self.STATION" Multiplicity="1" />
+    <End Role="JOURNEY" Type="Self.JOURNEY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATION">
+        <PropertyRef Name="STATIONID" />
+      </Principal>
+      <Dependent Role="JOURNEY">
+        <PropertyRef Name="DEPARTURE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PAYMENTDETAILS_USERID_FK">
+    <End Role="USERACCOUNT" Type="Self.USERACCOUNT" Multiplicity="1" />
+    <End Role="PAYMENTDETAILS" Type="Self.PAYMENTDETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERACCOUNT">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="PAYMENTDETAILS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ROUTE_DEPARTURE_FK">
+    <End Role="STATION" Type="Self.STATION" Multiplicity="1" />
+    <End Role="ROUTE" Type="Self.ROUTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATION">
+        <PropertyRef Name="STATIONID" />
+      </Principal>
+      <Dependent Role="ROUTE">
+        <PropertyRef Name="DEPARTURE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ROUTE_DESTINATION_FK">
+    <End Role="STATION" Type="Self.STATION" Multiplicity="1" />
+    <End Role="ROUTE" Type="Self.ROUTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATION">
+        <PropertyRef Name="STATIONID" />
+      </Principal>
+      <Dependent Role="ROUTE">
+        <PropertyRef Name="DESTINATION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ROUTE_FIRSTSTOP_FK">
+    <End Role="STATION" Type="Self.STATION" Multiplicity="0..1" />
+    <End Role="ROUTE" Type="Self.ROUTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATION">
+        <PropertyRef Name="STATIONID" />
+      </Principal>
+      <Dependent Role="ROUTE">
+        <PropertyRef Name="FIRSTSTOP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SCHEDULE_ROUTEID_FK">
+    <End Role="ROUTE" Type="Self.ROUTE" Multiplicity="1" />
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROUTE">
+        <PropertyRef Name="ROUTEID" />
+      </Principal>
+      <Dependent Role="SCHEDULE">
+        <PropertyRef Name="ROUTEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SCHEDULE_TRAINID_FK">
+    <End Role="TRAIN" Type="Self.TRAIN" Multiplicity="1" />
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRAIN">
+        <PropertyRef Name="TRAINID" />
+      </Principal>
+      <Dependent Role="SCHEDULE">
+        <PropertyRef Name="TRAINID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="STANDARDCLASSCOACHES_TRAINID_FK">
+    <End Role="TRAIN" Type="Self.TRAIN" Multiplicity="1" />
+    <End Role="COACH_STANDARD" Type="Self.COACH_STANDARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRAIN">
+        <PropertyRef Name="TRAINID" />
+      </Principal>
+      <Dependent Role="COACH_STANDARD">
+        <PropertyRef Name="TRAINID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C00171612">
+    <End Role="PAYMENTDETAILS" Type="Self.PAYMENTDETAILS" Multiplicity="0..1" />
+    <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAYMENTDETAILS">
+        <PropertyRef Name="USERID" />
+        <PropertyRef Name="NAMEONCARD" />
+        <PropertyRef Name="CARDNUMBER" />
+        <PropertyRef Name="EXPIRYDATE" />
+      </Principal>
+      <Dependent Role="TRANSACTIONS">
+        <PropertyRef Name="USERID" />
+        <PropertyRef Name="NAMEONCARD" />
+        <PropertyRef Name="CARDNUMBER" />
+        <PropertyRef Name="EXPIRYDATE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_JOURNEYID_FK">
+    <End Role="JOURNEY" Type="Self.JOURNEY" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOURNEY">
+        <PropertyRef Name="JOURNEYID" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="JOURNEYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_TRANSACTIONID_FK">
+    <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSACTIONS">
+        <PropertyRef Name="TRANSACTIONID" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="TRANSACTIONID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="COACH_FIRST" EntityType="Self.COACH_FIRST" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="COACH_STANDARD" EntityType="Self.COACH_STANDARD" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="JOURNEY" EntityType="Self.JOURNEY" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="PAYMENTDETAILS" EntityType="Self.PAYMENTDETAILS" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="ROUTE" EntityType="Self.ROUTE" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="STATION" EntityType="Self.STATION" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="TICKET" EntityType="Self.TICKET" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="TRAIN" EntityType="Self.TRAIN" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="TRANSACTIONS" EntityType="Self.TRANSACTIONS" Schema="PRCS251F" store:Type="Tables" />
+    <EntitySet Name="USERACCOUNT" EntityType="Self.USERACCOUNT" Schema="PRCS251F" store:Type="Tables" />
+    <AssociationSet Name="FIRSTCLASSCOACHES_TRAINID_FK" Association="Self.FIRSTCLASSCOACHES_TRAINID_FK">
+      <End Role="TRAIN" EntitySet="TRAIN" />
+      <End Role="COACH_FIRST" EntitySet="COACH_FIRST" />
+    </AssociationSet>
+    <AssociationSet Name="JOURNEY_ARRIVAL_FK" Association="Self.JOURNEY_ARRIVAL_FK">
+      <End Role="STATION" EntitySet="STATION" />
+      <End Role="JOURNEY" EntitySet="JOURNEY" />
+    </AssociationSet>
+    <AssociationSet Name="JOURNEY_DEPARTURE_FK" Association="Self.JOURNEY_DEPARTURE_FK">
+      <End Role="STATION" EntitySet="STATION" />
+      <End Role="JOURNEY" EntitySet="JOURNEY" />
+    </AssociationSet>
+    <AssociationSet Name="PAYMENTDETAILS_USERID_FK" Association="Self.PAYMENTDETAILS_USERID_FK">
+      <End Role="USERACCOUNT" EntitySet="USERACCOUNT" />
+      <End Role="PAYMENTDETAILS" EntitySet="PAYMENTDETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="ROUTE_DEPARTURE_FK" Association="Self.ROUTE_DEPARTURE_FK">
+      <End Role="STATION" EntitySet="STATION" />
+      <End Role="ROUTE" EntitySet="ROUTE" />
+    </AssociationSet>
+    <AssociationSet Name="ROUTE_DESTINATION_FK" Association="Self.ROUTE_DESTINATION_FK">
+      <End Role="STATION" EntitySet="STATION" />
+      <End Role="ROUTE" EntitySet="ROUTE" />
+    </AssociationSet>
+    <AssociationSet Name="ROUTE_FIRSTSTOP_FK" Association="Self.ROUTE_FIRSTSTOP_FK">
+      <End Role="STATION" EntitySet="STATION" />
+      <End Role="ROUTE" EntitySet="ROUTE" />
+    </AssociationSet>
+    <AssociationSet Name="SCHEDULE_ROUTEID_FK" Association="Self.SCHEDULE_ROUTEID_FK">
+      <End Role="ROUTE" EntitySet="ROUTE" />
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+    </AssociationSet>
+    <AssociationSet Name="SCHEDULE_TRAINID_FK" Association="Self.SCHEDULE_TRAINID_FK">
+      <End Role="TRAIN" EntitySet="TRAIN" />
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+    </AssociationSet>
+    <AssociationSet Name="STANDARDCLASSCOACHES_TRAINID_FK" Association="Self.STANDARDCLASSCOACHES_TRAINID_FK">
+      <End Role="TRAIN" EntitySet="TRAIN" />
+      <End Role="COACH_STANDARD" EntitySet="COACH_STANDARD" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C00171612" Association="Self.SYS_C00171612">
+      <End Role="PAYMENTDETAILS" EntitySet="PAYMENTDETAILS" />
+      <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_JOURNEYID_FK" Association="Self.TICKET_JOURNEYID_FK">
+      <End Role="JOURNEY" EntitySet="JOURNEY" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_TRANSACTIONID_FK" Association="Self.TICKET_TRANSACTIONID_FK">
+      <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

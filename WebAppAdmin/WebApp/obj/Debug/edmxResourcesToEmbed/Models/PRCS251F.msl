@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="COACH_FIRST">
+      <EntityTypeMapping TypeName="Model.COACH_FIRST">
+        <MappingFragment StoreEntitySet="COACH_FIRST">
+          <ScalarProperty Name="TRAINID" ColumnName="TRAINID" />
+          <ScalarProperty Name="COACHNO" ColumnName="COACHNO" />
+          <ScalarProperty Name="SEATING" ColumnName="SEATING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COACH_STANDARD">
+      <EntityTypeMapping TypeName="Model.COACH_STANDARD">
+        <MappingFragment StoreEntitySet="COACH_STANDARD">
+          <ScalarProperty Name="TRAINID" ColumnName="TRAINID" />
+          <ScalarProperty Name="COACHNO" ColumnName="COACHNO" />
+          <ScalarProperty Name="WINDOWSEATS" ColumnName="WINDOWSEATS" />
+          <ScalarProperty Name="AISLESEATS" ColumnName="AISLESEATS" />
+          <ScalarProperty Name="TABLESEATS" ColumnName="TABLESEATS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOURNEYs">
+      <EntityTypeMapping TypeName="Model.JOURNEY">
+        <MappingFragment StoreEntitySet="JOURNEY">
+          <ScalarProperty Name="JOURNEYID" ColumnName="JOURNEYID" />
+          <ScalarProperty Name="DEPARTURE" ColumnName="DEPARTURE" />
+          <ScalarProperty Name="ARRIVAL" ColumnName="ARRIVAL" />
+          <ScalarProperty Name="DEPARTURETIME" ColumnName="DEPARTURETIME" />
+          <ScalarProperty Name="ARRIVALTIME" ColumnName="ARRIVALTIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYMENTDETAILS">
+      <EntityTypeMapping TypeName="Model.PAYMENTDETAIL">
+        <MappingFragment StoreEntitySet="PAYMENTDETAILS">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NAMEONCARD" ColumnName="NAMEONCARD" />
+          <ScalarProperty Name="CARDNUMBER" ColumnName="CARDNUMBER" />
+          <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+          <ScalarProperty Name="STREETNUMBER" ColumnName="STREETNUMBER" />
+          <ScalarProperty Name="POSTCODE" ColumnName="POSTCODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROUTEs">
+      <EntityTypeMapping TypeName="Model.ROUTE">
+        <MappingFragment StoreEntitySet="ROUTE">
+          <ScalarProperty Name="ROUTEID" ColumnName="ROUTEID" />
+          <ScalarProperty Name="DEPARTURE" ColumnName="DEPARTURE" />
+          <ScalarProperty Name="FIRSTSTOP" ColumnName="FIRSTSTOP" />
+          <ScalarProperty Name="DESTINATION" ColumnName="DESTINATION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCHEDULEs">
+      <EntityTypeMapping TypeName="Model.SCHEDULE">
+        <MappingFragment StoreEntitySet="SCHEDULE">
+          <ScalarProperty Name="ROUTEID" ColumnName="ROUTEID" />
+          <ScalarProperty Name="TRAINID" ColumnName="TRAINID" />
+          <ScalarProperty Name="DEPARTURETIME" ColumnName="DEPARTURETIME" />
+          <ScalarProperty Name="ARRIVALTIME" ColumnName="ARRIVALTIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATIONs">
+      <EntityTypeMapping TypeName="Model.STATION">
+        <MappingFragment StoreEntitySet="STATION">
+          <ScalarProperty Name="STATIONID" ColumnName="STATIONID" />
+          <ScalarProperty Name="STATIONNAME" ColumnName="STATIONNAME" />
+          <ScalarProperty Name="PLATFORMS" ColumnName="PLATFORMS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TICKETs">
+      <EntityTypeMapping TypeName="Model.TICKET">
+        <MappingFragment StoreEntitySet="TICKET">
+          <ScalarProperty Name="TICKETID" ColumnName="TICKETID" />
+          <ScalarProperty Name="TRANSACTIONID" ColumnName="TRANSACTIONID" />
+          <ScalarProperty Name="JOURNEYID" ColumnName="JOURNEYID" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="SEATRESERVATION" ColumnName="SEATRESERVATION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRAINs">
+      <EntityTypeMapping TypeName="Model.TRAIN">
+        <MappingFragment StoreEntitySet="TRAIN">
+          <ScalarProperty Name="TRAINID" ColumnName="TRAINID" />
+          <ScalarProperty Name="COACH_FIRST" ColumnName="COACH_FIRST" />
+          <ScalarProperty Name="COACH_STANDARD" ColumnName="COACH_STANDARD" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="TOTALSEATS" ColumnName="TOTALSEATS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACTIONS">
+      <EntityTypeMapping TypeName="Model.TRANSACTION">
+        <MappingFragment StoreEntitySet="TRANSACTIONS">
+          <ScalarProperty Name="TRANSACTIONID" ColumnName="TRANSACTIONID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="NAMEONCARD" ColumnName="NAMEONCARD" />
+          <ScalarProperty Name="CARDNUMBER" ColumnName="CARDNUMBER" />
+          <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="DATEOFPURCHASE" ColumnName="DATEOFPURCHASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERACCOUNTs">
+      <EntityTypeMapping TypeName="Model.USERACCOUNT">
+        <MappingFragment StoreEntitySet="USERACCOUNT">
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="USERTYPE" ColumnName="USERTYPE" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+          <ScalarProperty Name="EMAILADDRESS" ColumnName="EMAILADDRESS" />
+          <ScalarProperty Name="STREETNUMBER" ColumnName="STREETNUMBER" />
+          <ScalarProperty Name="POSTCODE" ColumnName="POSTCODE" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

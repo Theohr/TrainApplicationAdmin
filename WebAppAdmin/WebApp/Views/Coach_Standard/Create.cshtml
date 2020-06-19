@@ -1,0 +1,106 @@
+﻿@model WebApp.Models.COACH_STANDARD
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--Title of the page-->
+    <h2><i class="fas fa-user-plus"></i> Create Coach</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TRAINID, "TRAINID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("TRAINID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TRAINID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.COACHNO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.COACHNO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.COACHNO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WINDOWSEATS, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WINDOWSEATS, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.WINDOWSEATS, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AISLESEATS, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AISLESEATS, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AISLESEATS, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TABLESEATS, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TABLESEATS, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TABLESEATS, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+                <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                    <i class="fas fa-backward"></i> @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    }
+
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

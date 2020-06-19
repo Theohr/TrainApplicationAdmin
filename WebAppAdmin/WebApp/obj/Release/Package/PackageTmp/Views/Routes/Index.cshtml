@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebApp.Models.ROUTE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml"; // the layout of the page
+}
+
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a route icon-->
+    <h2><i class="fas fa-route"></i> Routes</h2>
+
+    <!--The search bar searching for Departure  of the routes on the list on button click-->
+    <p>
+        @using (@Html.BeginForm("Index", "Routes", FormMethod.Get))
+        {
+            <b><i class="fas fa-search"></i> Search By:</b>
+            <b>Search By:</b>
+            @Html.RadioButton("searchBy", "Departure", true) <text>Departure</text>
+            @Html.TextBox("Search") <input type="submit" value="search">
+        }
+    </p>
+
+    <!--Create new user button which leads to the Create view of the journey with the appropriate design-->
+    <a>
+        <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-bottom:20px;
+                  margin:10px;
+                  width: auto;
+                  height: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+            <i class="fas fa-plus"></i> @Html.ActionLink("Create New", "Create")
+        </p>
+    </a>
+
+    <!--Table where fields of the user are shown-->
+    <table class="table">
+        <tr>
+            <th>
+                Departure <!--departure -->
+            </th>
+            <th>
+                First Stop <!--first stop-->
+            </th>
+            <th>
+                Destination <!--destinatuion-->-->
+            </th>
+            <th></th>
+        </tr>
+
+        <!--For each field in the table for the station then the specific data are passed into the table-->
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STATION.STATIONNAME) <!--station namer id will be displayed under the  departure field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STATION1.STATIONNAME) <!--station name will be displayed under the  station 1 field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STATION2.STATIONNAME) <!--station name id will be displayed under the  arrival id field-->
+            </td>
+            <!--Edit, Details, Delete buttons at the end of the user details redirecting to their representative page-->
+            <td>
+                <i class="fas fa-edit"></i> @Html.ActionLink("Edit", "Edit", new { id = item.ROUTEID }) |
+                <i class="fas fa-info-circle"></i> @Html.ActionLink("Details", "Details", new { id = item.ROUTEID }) |
+                <i class="fas fa-trash-alt"></i> @Html.ActionLink("Delete", "Delete", new { id = item.ROUTEID })
+            </td>
+        </tr>
+        }
+
+    </table>
+</body>

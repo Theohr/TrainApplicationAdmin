@@ -1,0 +1,160 @@
+﻿@model WebApp.Models.USERACCOUNT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml"; // the layout of the page
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a user icon-->
+    <h2><i class="fas fa-info-circle"></i> User Account Details</h2>
+
+    <!--Container with the details-->
+    <div style="margin-bottom:20px">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <!--user id label-->
+                User ID:
+            </dt>
+
+            <!--user id value-->
+            <dd>
+                @Html.DisplayFor(model => model.USERID)
+            </dd>
+            <!--user type label-->
+            <dt>
+                User Type:
+            </dt>
+
+            <dd>
+                <!--user type value-->
+                @Html.DisplayFor(model => model.USERTYPE)
+            </dd>
+            <!--first name label-->
+            <dt>
+                First Name:
+            </dt>
+            <!--first name value-->
+            <dd>
+                @Html.DisplayFor(model => model.FIRSTNAME)
+            </dd>
+            <!--last namne label-->
+            <dt>
+                Last Name:
+            </dt>
+            <!--last name value-->
+            <dd>
+                @Html.DisplayFor(model => model.LASTNAME)
+            </dd>
+
+            <!--phone number label-->
+            <dt>
+                Phone Number:
+            </dt>
+            <!--phone number value-->
+            <dd>
+                @Html.DisplayFor(model => model.PHONENUMBER)
+            </dd>
+            <!-- email address label-->
+            <dt>
+                Email Address:
+            </dt>
+            <!--email address value-->
+            <dd>
+                @Html.DisplayFor(model => model.EMAILADDRESS)
+            </dd>
+            <!--street number label-->
+            <dt>
+                Street Number:
+            </dt>
+            <!--streen number value-->
+            <dd>
+                @Html.DisplayFor(model => model.STREETNUMBER)
+            </dd>
+            <!--post codee label-->
+            <dt>
+                Postcode:
+            </dt>
+
+            <dd>
+                <!--postcode bvalue-->
+                @Html.DisplayFor(model => model.POSTCODE)
+            </dd>
+
+            <dt>
+                <!--user name label-->
+                Username:
+            </dt>
+
+            <dd>
+                <!--user name value-->
+                @Html.DisplayFor(model => model.USERNAME)
+            </dd>
+            <dt>
+                <!--password label-->
+                Password:
+            </dt>
+
+            <dd>
+                <!--password value -->
+                @Html.DisplayFor(model => model.PASSWORD)
+            </dd>
+
+        </dl>
+        <!--container with the edit button and back to list button-->
+        <div class="form-group">
+            <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-edit"></i> @Html.ActionLink("Edit", "Edit", new { id = Model.USERID }) <!--edit button-->
+            </p>
+            <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index") <!--back to list button-->
+            </p>
+        </div>
+
+
+    </div>
+
+</body>

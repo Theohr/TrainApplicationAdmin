@@ -1,0 +1,111 @@
+﻿@model WebApp.Models.COACH_STANDARD
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    a {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <h2><i class="fas fa-info-circle"></i> Coach Details</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Train ID:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TRAINID)
+            </dd>
+            <dt>
+                COach Number:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.COACHNO)
+            </dd>
+            <dt>
+                Window Seats:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WINDOWSEATS)
+            </dd>
+
+            <dt>
+                Aisle Seats:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AISLESEATS)
+            </dd>
+
+            <dt>
+                Table Seats:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TABLESEATS)
+            </dd>
+
+            <dt>
+                Train Status:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TRAIN.STATUS)
+            </dd>
+
+        </dl>
+        <div class="form-group">
+            <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-edit"></i> @Html.ActionLink("Edit", "Edit", new { id = Model.TRAINID, idcoach = Model.COACHNO })
+            </p>
+            <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</body>

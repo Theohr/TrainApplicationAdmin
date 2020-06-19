@@ -1,0 +1,155 @@
+﻿@model WebApp.Models.USERACCOUNT
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml"; // the layout of the page
+}
+
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a user icon-->
+    <h2><i class="fas fa-edit"></i> Edit User Account</h2>
+
+    <!--Creating a form with the user details-->
+    @using (Html.BeginForm())
+    {
+        <!--the AntiForgeryToken for security-->
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })  <!--summarize error messages in a specific place-->
+        @Html.HiddenFor(model => model.USERID)  <!-- User ID is unique so it can't be changed-->
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.USERTYPE, htmlAttributes: new { @class = "control-label col-md-2" })  <!--The usertype label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.USERTYPE, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of usertype-->
+                @Html.ValidationMessageFor(model => model.USERTYPE, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.FIRSTNAME, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The first name label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FIRSTNAME, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of usertype-->
+                @Html.ValidationMessageFor(model => model.FIRSTNAME, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.LASTNAME, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The last name label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LASTNAME, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of lastname-->
+                @Html.ValidationMessageFor(model => model.LASTNAME, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.PHONENUMBER, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The phone number label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PHONENUMBER, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of phonenuymber-->
+                @Html.ValidationMessageFor(model => model.PHONENUMBER, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.EMAILADDRESS, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The email address label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EMAILADDRESS, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of email address-->
+                @Html.ValidationMessageFor(model => model.EMAILADDRESS, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.STREETNUMBER, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The street number label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.STREETNUMBER, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of streetnumber-->
+                @Html.ValidationMessageFor(model => model.STREETNUMBER, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.POSTCODE, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The postcode label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.POSTCODE, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of postcode-->
+                @Html.ValidationMessageFor(model => model.POSTCODE, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.USERNAME, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The username label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of username-->
+                @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the values below-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The poassword label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of password-->
+                @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the Save and Back to list button-->
+        <div class="form-group">
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" /> <!--Save button-->
+            </div>
+
+            <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index") <!--Button to go back to list-->
+            </div>
+
+        </div>
+
+    </div>
+    }
+</body>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -1,0 +1,80 @@
+﻿@model WebApp.Models.COACH_FIRST
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a user icon-->
+    <h2><i class="fas fa-edit"></i> Edit Coach</h2>
+
+
+    <!--Creating a form with the user details-->
+    @using (Html.BeginForm())
+    {
+        <!--the AntiForgeryToken for security-->
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.TRAINID) <!-- Train ID is unique so it can't be changed-->
+
+        @Html.HiddenFor(model => model.COACHNO) <!-- Coach ID is unique so it can't be changed-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SEATING, htmlAttributes: new { @class = "control-label col-md-2" })<!--label for seating-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SEATING, new { htmlAttributes = new { @class = "form-control" } })<!--seating balue-->
+                @Html.ValidationMessageFor(model => model.SEATING, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--contianers containing the 2 buttons-->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" /> <!--save button-->
+            </div>
+            <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index") <!--back to list button-->
+            </div>
+        </div>
+    </div>
+    }
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

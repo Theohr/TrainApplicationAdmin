@@ -1,0 +1,99 @@
+﻿@model WebApp.Models.ROUTE
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--Title of the page-->
+    <h2><i class="fas fa-plus"></i>Create Route</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        <!--security token-->
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ROUTEID, htmlAttributes: new { @class = "control-label col-md-2" }) <!--route id label-->
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ROUTEID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } }) <!--route id value-->
+                    @Html.ValidationMessageFor(model => model.ROUTEID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DEPARTURE, "DEPARTURE", htmlAttributes: new { @class = "control-label col-md-2" }) <!--departure id label-->
+                <div class="col-md-10">
+                    @Html.DropDownList("DEPARTURE", null, htmlAttributes: new { @class = "form-control" }) <!--departure value-->
+                    @Html.ValidationMessageFor(model => model.DEPARTURE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FIRSTSTOP, "FIRSTSTOP", htmlAttributes: new { @class = "control-label col-md-2" }) <!--first stop label-->
+                <div class="col-md-10">
+                    @Html.DropDownList("FIRSTSTOP", null, htmlAttributes: new { @class = "form-control" }) <!--first stop value-->
+                    
+                    @Html.ValidationMessageFor(model => model.FIRSTSTOP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DESTINATION, "DESTINATION", htmlAttributes: new { @class = "control-label col-md-2" }) <!--destination label-->
+                <div class="col-md-10">
+                    @Html.DropDownList("DESTINATION", null, htmlAttributes: new { @class = "form-control" }) <!--destination value-->
+                    @Html.ValidationMessageFor(model => model.DESTINATION, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" /> <!--create button-->
+                </div>
+                <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                    <i class="fas fa-backward"></i> @Html.ActionLink("Back to List", "Index") <!--back button-->
+                </div>
+            </div>
+        </div>
+    }
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

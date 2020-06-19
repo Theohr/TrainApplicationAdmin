@@ -1,0 +1,106 @@
+﻿@model WebApp.Models.JOURNEY
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--Title of the page-->
+    <h2><i class="fas fa-plus"></i> Create Journey</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        <!--security feature-->
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.JOURNEYID, htmlAttributes: new { @class = "control-label col-md-2" }) <!--journey id label-->
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JOURNEYID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } }) <!--journey id value-->
+                    @Html.ValidationMessageFor(model => model.JOURNEYID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DEPARTURE, "DEPARTURE", htmlAttributes: new { @class = "control-label col-md-2" }) <!--departure label-->
+                <div class="col-md-10">
+                    @Html.DropDownList("DEPARTURE", null, htmlAttributes: new { @class = "form-control" }) <!--departure value-->
+                    @Html.ValidationMessageFor(model => model.DEPARTURE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ARRIVAL, "ARRIVAL", htmlAttributes: new { @class = "control-label col-md-2" }) <!-- arrival lavel-->
+                <div class="col-md-10">
+                    @Html.DropDownList("ARRIVAL", null, htmlAttributes: new { @class = "form-control" }) <!--arrival value-->
+                    @Html.ValidationMessageFor(model => model.ARRIVAL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DEPARTURETIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DEPARTURETIME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DEPARTURETIME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ARRIVALTIME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ARRIVALTIME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ARRIVALTIME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" /> <!--create button-->
+                </div>
+                <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                    <i class="fas fa-backward"></i> @Html.ActionLink("Back to List", "Index") <!--back to list-->
+                </div>
+            </div>
+        </div>
+    }
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

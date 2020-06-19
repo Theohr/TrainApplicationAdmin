@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--container for the buttons-->
+    <div class="row" style="padding:5%; margin:auto;">
+        <a>
+            <!--Button that takes the user to the user accounts table-->
+            <h4 style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35);">
+                <i class="fas fa-user-circle"></i>
+                @Html.ActionLink("Accounts", "Index", "UserAccounts")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the trains  table-->
+            <h4 style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-train"></i>
+                @Html.ActionLink("Trains", "Index", "Trains")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the routes table-->
+            <h4 style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-route"></i>
+                @Html.ActionLink("Routes", "Index", "Routes")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the stations table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  float:left;
+                  background-color:#DCDCDC;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-map-marker-alt"></i>
+                @Html.ActionLink("Stations", "Index", "Stations")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the journeys table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  background-color:#DCDCDC;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-road"></i>
+                @Html.ActionLink("Journeys", "Index", "Journeys")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the schedule table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  background-color:#DCDCDC;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-calendar-alt"></i>
+                @Html.ActionLink("Schedules", "Index", "Schedules")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the tickets table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  float:left;
+                  margin:20px;
+                  width: 215px;
+                  background-color:#DCDCDC;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-ticket-alt"></i>
+                @Html.ActionLink("Tickets", "Index", "Tickets")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the transactions table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  background-color:#DCDCDC;
+                  margin-top: 10px;
+                  margin:20px;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-print"></i>
+                @Html.ActionLink("Transactions", "Index", "Transactions")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the coach first table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  background-color:#DCDCDC;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-subway"></i>
+                @Html.ActionLink("Coach First", "Index", "Coach_First")
+            </h4>
+        </a>
+
+        <a>
+            <!--Button that takes the user to the coach standard table-->
+            <h4 style="
+                  text-align:center;
+                  padding: 25px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:20px;
+                  background-color:#DCDCDC;
+                  width: 215px;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-subway"></i>
+                @Html.ActionLink("Coach Standard", "Index", "Coach_Standard")
+            </h4>
+        </a>
+    </div>
+</body>
+
+

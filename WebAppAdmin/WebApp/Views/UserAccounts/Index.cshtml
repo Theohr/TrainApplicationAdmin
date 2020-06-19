@@ -1,0 +1,158 @@
+﻿@model IEnumerable<WebApp.Models.USERACCOUNT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml"; // the layout of the page
+}
+
+<style>    /*where the css part of the page is */
+        a { /*all the labels will have the following styling */
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+                color: yellow;
+                background-color: transparent;
+                text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a user icon-->
+    <h2><i class="fas fa-users"></i> User Accounts</h2>
+
+
+    <!--The search bar searching for Username and UserType of the user on the list on button click-->
+    <p style="margin-top:20px">
+        @using (@Html.BeginForm("Index", "UserAccounts", FormMethod.Get))
+        {
+            <b><i class="fas fa-search"></i> Search By:</b>
+            @Html.RadioButton("searchBy", "Username", true) <text>Username</text>
+            @Html.RadioButton("searchBy", "Usertype") <text>User Type</text>
+            @Html.TextBox("Search") <input type="submit" value="Search">
+        }
+    </p>
+
+    <!--Create new user button which leads to the Create view of the user with the appropriate design-->
+    <a>
+        <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-bottom:20px;
+                  margin:10px;
+                  width: auto;
+                  height: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+            <i class="fas fa-plus"></i> @Html.ActionLink("Create New", "Create")
+        </p>
+    </a>
+
+    <!--Table where fields of the user are shown-->
+    <table class="table">
+        <tr>
+            <!--User Type-->
+            <th>
+                User Type
+            </th>
+            <!--First name-->
+            <th>
+                First Name
+            </th>
+            <!--Last Name-->
+            <th>
+                Last Name
+            </th>
+            <!--Phone Number-->
+            <th>
+                Phone Number
+            </th>
+            <!--Email Address-->
+            <th>
+                Email Address
+            </th>
+            <!--Street Number-->
+            <th>
+                Street Number
+            </th>
+            <!--Postcode-->
+            <th>
+                Postcode
+            </th>
+            <!--Username-->
+            <th>
+                Username
+            </th>
+            <!--Password-->
+            <th>
+                Password
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        <!--For each field in the table for the user then the specific data are passed into the table-->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <!--User's usertype will be displayed under the usertype list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.USERTYPE)
+                </td>
+                <!--User's first name will be displayed under the first name list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.FIRSTNAME)
+                </td>
+                <!--User's last name will be displayed under the last name list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.LASTNAME)
+                </td>
+                <!--User's phone number will be displayed under the phone number list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.PHONENUMBER)
+                </td>
+                <!--User's email address will be displayed under the email address list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAILADDRESS)
+                </td>
+                <!--User's streetnumber will be displayed under the streetnumber list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.STREETNUMBER)
+                </td>
+                <!--User's postcode will be displayed under the postcode list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.POSTCODE)
+                </td>
+                <!--User's username will be displayed under the username list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.USERNAME)
+                </td>
+                <!--User's password will be displayed under the password list-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.PASSWORD)
+                </td>
+
+                <!--Edit, Details, Delete buttons at the end of the user details redirecting to their representative page-->
+                <td>
+                    <i class="fas fa-edit"></i> @Html.ActionLink("Edit", "Edit", new { id = item.USERID }) |
+                    <i class="fas fa-info-circle"></i> @Html.ActionLink("Details", "Details", new { id = item.USERID }) |
+                    <i class="fas fa-trash-alt"></i> @Html.ActionLink("Delete", "Delete", new { id = item.USERID })
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+

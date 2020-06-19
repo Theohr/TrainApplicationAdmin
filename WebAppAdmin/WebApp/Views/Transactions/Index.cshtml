@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebApp.Models.TRANSACTION>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml"; // the layout of the page
+}
+
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with an icon-->
+    <h2><i class="fas fa-print"></i> Transactions</h2>
+
+    <!--The search bar searching for the user id of the user on the list on button click-->
+    <p style="margin-top:20px">
+        @using (@Html.BeginForm("Index", "Transactions", FormMethod.Get))
+        {
+            <b><i class="fas fa-search"></i> Search By:</b>
+            @Html.RadioButton("searchBy", "USERID", true) <text>User ID</text>
+            @Html.TextBox("Search") <input type="submit" value="Search">
+        }
+    </p>
+
+    <!--Create new user button which leads to the Create view of the transaction with the appropriate design-->
+    <a>
+        <p style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-bottom:20px;
+                  margin:10px;
+                  width: auto;
+                  height: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+            <i class="fas fa-plus"></i> @Html.ActionLink("Create New", "Create")
+        </p>
+    </a>
+
+    <!--Table where fields of the user are shown-->
+    <table class="table">
+        <tr>
+            <th>
+                User ID <!--User ID-->
+            </th>
+            <th>
+                Price <!--Price-->
+            </th>
+            <th>
+                Date Of Purchase <!--Date of purchase-->
+            </th>
+
+            <th></th>
+        </tr>
+
+        <!--For each field in the table for the user then the specific data are passed into the table-->
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.USERID) <!--User's ID will be displayed under the User id field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRICE) <!--User's ticket price will be displayed under the price field-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATEOFPURCHASE) <!--User's date of purchase will be displayed under the dat of purchase field-->
+            </td>
+            <!--Edit, Details, Delete buttons at the end of the user details redirecting to their representative page-->
+            <td>
+                <i class="fas fa-edit"></i> @Html.ActionLink("Edit", "Edit", new { id = item.TRANSACTIONID }) |
+                <i class="fas fa-info-circle"></i> @Html.ActionLink("Details", "Details", new { id = item.TRANSACTIONID }) |
+                <i class="fas fa-user-minus"></i> @Html.ActionLink("Delete", "Delete", new { id = item.TRANSACTIONID })
+            </td>
+        </tr>
+        }
+
+    </table>
+</body>

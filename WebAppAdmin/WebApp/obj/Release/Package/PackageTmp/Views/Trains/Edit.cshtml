@@ -1,0 +1,102 @@
+﻿@model WebApp.Models.TRAIN
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_ResPagesLayout.cshtml";
+}
+<style>
+    /*where the css part of the page is */
+    a { /*all the labels will have the following styling */
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+
+        a:hover { /* styling when they are hovered*/
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active { /* styling when they weren't clicked before */
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+</style>
+<body>
+    <!--The title of the page with a user icon-->
+    <h2><i class="fas fa-edit"></i> Edit Train</h2>
+
+    <!--Creating a form with the user details-->
+    @using (Html.BeginForm())
+    {
+        <!--the AntiForgeryToken for security-->
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) <!--summarize error messages in a specific place-->
+        @Html.HiddenFor(model => model.TRAINID) <!-- Train ID is unique so it can't be changed-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.COACH_FIRST, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The coach first label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.COACH_FIRST, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of coach first-->
+                @Html.ValidationMessageFor(model => model.COACH_FIRST, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.COACH_STANDARD, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The coach standard label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.COACH_STANDARD, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of coach standard-->
+                @Html.ValidationMessageFor(model => model.COACH_STANDARD, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.STATUS, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The status label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.STATUS, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of status-->
+                @Html.ValidationMessageFor(model => model.STATUS, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TOTALSEATS, htmlAttributes: new { @class = "control-label col-md-2" }) <!--The total seats label-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TOTALSEATS, new { htmlAttributes = new { @class = "form-control" } }) <!--The value of total seats-->
+                @Html.ValidationMessageFor(model => model.TOTALSEATS, "", new { @class = "text-danger" }) <!--Displaying an error in the context if exists-->
+            </div>
+        </div>
+
+        <!--Container with the Save and Back to list button-->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" /> <!--Save button-->
+            </div>
+            <div style="
+                  text-align:center;
+                  background-color:#DCDCDC;
+                  padding: 10px;
+                  float:left;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin:10px;
+                  height:auto;
+                  width: auto;
+                  border-radius: 0.2em; overflow: hidden;
+                  position: relative;
+                  box-shadow: 0px 1.5px 5px rgba(0,0,0,0.35)">
+                <i class="fas fa-arrow-left"></i> @Html.ActionLink("Back to List", "Index") <!--Button to go back to list-->
+            </div>
+        </div>
+    </div>
+    }
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
